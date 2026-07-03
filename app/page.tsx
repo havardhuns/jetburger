@@ -164,7 +164,7 @@ export default async function Home() {
               Se menyen
             </Button>
           </FadeUp>
-          <FadeUp delay={0.32} className="mt-3 flex flex-wrap items-center gap-x-4 gap-y-2.5 text-sm font-medium text-foreground/80">
+          <FadeUp delay={0.32} className="mt-3 flex flex-col md:flex-wrap md:items-center gap-x-4 gap-y-2.5 text-sm font-medium text-foreground/80">
             {openingHours && (
               <span className="flex items-center gap-2">
                 <Clock className="size-4" />
