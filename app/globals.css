@@ -101,7 +101,10 @@
   }
 }
 
-/* react-medium-image-zoom: match the dark theme */
+/* react-medium-image-zoom: match the dark theme, no zoom-in cursor */
+[data-rmiz-content="found"] img {
+  cursor: default;
+}
 [data-rmiz-modal-overlay="visible"] {
   background-color: rgb(10 8 7 / 0.88);
 }

@@ -28,7 +28,7 @@ export function MenuGrid({ cards }: { cards: MenuGridCard[] }) {
               height={984}
               placeholder={card.lqip ? "blur" : "empty"}
               blurDataURL={card.lqip}
-              className="block aspect-[3/4.1] w-full object-cover object-top"
+              className="block h-auto w-full"
             />
           </Zoom>
         </figure>
