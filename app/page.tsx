@@ -176,7 +176,6 @@ export default async function Home() {
             </span>
             <span className="flex items-center gap-2">
               <Phone className="size-3.5" />
-              Eller ring{" "}
               <a href={telHref} className="font-semibold text-foreground">
                 {site.phone}
               </a>
