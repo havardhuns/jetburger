@@ -173,7 +173,7 @@ export default async function Home() {
             )}
             {telHref && (
               <span className="flex items-center gap-2">
-                <Phone className="size-3.5" />
+                <Phone className="size-4" />
                 <a href={telHref} className="font-semibold text-foreground">
                   {phone}
                 </a>
