@@ -33,8 +33,9 @@ export default async function Home() {
     throw new Error("The siteSettings document is missing in Sanity — run `pnpm seed`.");
   }
 
-  const { heroHeading, heroText, aboutHeading, aboutText, phone, email, address, openingHours, orderUrl, facebookUrl, instagramUrl } = settings;
+  const { heroHeading, heroText, menuHeading, menuText, aboutHeading, aboutText, contactHeading, phone, email, address, openingHours, orderUrl, facebookUrl, instagramUrl } = settings;
   const telHref = phone ? `tel:${phone.replace(/\s/g, "")}` : undefined;
+  const orderCtaLabel = settings.orderCtaLabel ?? "Bestill på nett";
 
   const logo = settings.logo?.asset
     ? { src: urlFor(settings.logo).width(80).height(80).fit("crop").url(), alt: settings.logo.alt ?? "Jetburger" }
@@ -100,7 +101,7 @@ export default async function Home() {
                 render={<a href={orderUrl} target="_blank" rel="noopener" />}
               >
                 <ShoppingCart data-icon="inline-start" />
-                Bestill på nett
+                {orderCtaLabel}
               </Button>
             )}
           </div>
@@ -143,7 +144,7 @@ export default async function Home() {
                 nativeButton={false}
                 render={<a href={orderUrl} target="_blank" rel="noopener" />}
               >
-                Bestill på nett
+                {orderCtaLabel}
               </Button>
             )}
             <Button
@@ -179,14 +180,16 @@ export default async function Home() {
       <section id="meny" className="mx-auto max-w-[1120px] px-5 py-[clamp(48px,8vw,72px)] lg:px-6">
         <div className="mb-9 flex flex-col gap-2.5">
           <span className="text-[13px] font-bold tracking-[0.12em] text-primary uppercase">Meny</span>
-          <h2 className="text-[clamp(28px,4vw,42px)] font-extrabold tracking-tight">Det vi lager</h2>
+          {menuHeading && (
+            <h2 className="text-[clamp(28px,4vw,42px)] font-extrabold tracking-tight">{menuHeading}</h2>
+          )}
           <p className="max-w-[55ch] leading-relaxed text-muted-foreground">
-            Trykk på et menykort for å se det i full størrelse.
+            {menuText}
             {orderUrl && (
               <>
                 {" "}
                 <a href={orderUrl} target="_blank" rel="noopener" className="font-semibold text-primary">
-                  Bestill på nett
+                  {orderCtaLabel}
                 </a>
                 {telHref ? "," : "."}
               </>
@@ -238,7 +241,9 @@ export default async function Home() {
       <section id="kontakt" className="mx-auto max-w-[1120px] px-5 py-[clamp(48px,8vw,72px)] lg:px-6">
         <div className="mb-9 flex flex-col gap-2.5">
           <span className="text-[13px] font-bold tracking-[0.12em] text-primary uppercase">Kontakt</span>
-          <h2 className="text-[clamp(28px,4vw,42px)] font-extrabold tracking-tight">Finn oss</h2>
+          {contactHeading && (
+            <h2 className="text-[clamp(28px,4vw,42px)] font-extrabold tracking-tight">{contactHeading}</h2>
+          )}
         </div>
         <div className="grid gap-5 md:grid-cols-2">
           <div className="flex flex-col gap-5">
@@ -343,7 +348,7 @@ export default async function Home() {
             {orderUrl && (
               <>
                 <a href={orderUrl} target="_blank" rel="noopener" className="font-semibold hover:text-foreground">
-                  Bestill på nett
+                  {orderCtaLabel}
                 </a>{" "}
                 eller{" "}
               </>

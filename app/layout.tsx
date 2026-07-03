@@ -1,7 +1,8 @@
 import type { Metadata } from "next";
 import { Archivo, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import { SanityLive } from "@/sanity/lib/live";
+import { sanityFetch, SanityLive } from "@/sanity/lib/live";
+import { SITE_SETTINGS_QUERY } from "@/sanity/lib/queries";
 import { cn } from "@/lib/utils";
 
 const archivo = Archivo({
@@ -14,11 +15,13 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-export const metadata: Metadata = {
-  title: "Jetburger – Evje",
-  description:
-    "Hjemmelagde burgere, hjemmelaget pizza og sprø fries — laget fra bunnen, midt i Evje sentrum. Åpent alle dager 15:00–22:00.",
-};
+export async function generateMetadata(): Promise<Metadata> {
+  const { data } = await sanityFetch({ query: SITE_SETTINGS_QUERY, stega: false });
+  return {
+    title: data?.seoTitle ?? "Jetburger – Evje",
+    description: data?.seoDescription ?? undefined,
+  };
+}
 
 export default function RootLayout({
   children,

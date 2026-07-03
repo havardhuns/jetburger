@@ -47,6 +47,17 @@ export const siteSettings = defineType({
       rows: 3,
     }),
     defineField({
+      name: 'menuHeading',
+      title: 'Meny – overskrift',
+      type: 'string',
+    }),
+    defineField({
+      name: 'menuText',
+      title: 'Meny – ingress',
+      type: 'text',
+      rows: 2,
+    }),
+    defineField({
       name: 'aboutHeading',
       title: 'Om oss – overskrift',
       type: 'string',
@@ -57,6 +68,11 @@ export const siteSettings = defineType({
       description: 'Tomme linjer gir nye avsnitt',
       type: 'text',
       rows: 6,
+    }),
+    defineField({
+      name: 'contactHeading',
+      title: 'Kontakt – overskrift',
+      type: 'string',
     }),
     defineField({
       name: 'phone',
@@ -86,6 +102,11 @@ export const siteSettings = defineType({
       validation: (rule) => rule.uri({ scheme: ['http', 'https'] }),
     }),
     defineField({
+      name: 'orderCtaLabel',
+      title: 'Bestillingsknapp – tekst',
+      type: 'string',
+    }),
+    defineField({
       name: 'facebookUrl',
       title: 'Facebook',
       type: 'url',
@@ -96,6 +117,17 @@ export const siteSettings = defineType({
       title: 'Instagram',
       type: 'url',
       validation: (rule) => rule.uri({ scheme: ['http', 'https'] }),
+    }),
+    defineField({
+      name: 'seoTitle',
+      title: 'SEO – sidetittel',
+      type: 'string',
+    }),
+    defineField({
+      name: 'seoDescription',
+      title: 'SEO – beskrivelse',
+      type: 'text',
+      rows: 3,
     }),
   ],
   preview: {

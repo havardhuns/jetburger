@@ -379,6 +379,20 @@
         },
         "optional": true
       },
+      "menuHeading": {
+        "type": "objectAttribute",
+        "value": {
+          "type": "string"
+        },
+        "optional": true
+      },
+      "menuText": {
+        "type": "objectAttribute",
+        "value": {
+          "type": "string"
+        },
+        "optional": true
+      },
       "aboutHeading": {
         "type": "objectAttribute",
         "value": {
@@ -387,6 +401,13 @@
         "optional": true
       },
       "aboutText": {
+        "type": "objectAttribute",
+        "value": {
+          "type": "string"
+        },
+        "optional": true
+      },
+      "contactHeading": {
         "type": "objectAttribute",
         "value": {
           "type": "string"
@@ -428,6 +449,13 @@
         },
         "optional": true
       },
+      "orderCtaLabel": {
+        "type": "objectAttribute",
+        "value": {
+          "type": "string"
+        },
+        "optional": true
+      },
       "facebookUrl": {
         "type": "objectAttribute",
         "value": {
@@ -436,6 +464,20 @@
         "optional": true
       },
       "instagramUrl": {
+        "type": "objectAttribute",
+        "value": {
+          "type": "string"
+        },
+        "optional": true
+      },
+      "seoTitle": {
+        "type": "objectAttribute",
+        "value": {
+          "type": "string"
+        },
+        "optional": true
+      },
+      "seoDescription": {
         "type": "objectAttribute",
         "value": {
           "type": "string"

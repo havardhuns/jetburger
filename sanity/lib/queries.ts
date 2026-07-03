@@ -15,15 +15,21 @@ export const SITE_SETTINGS_QUERY = defineQuery(`*[_id == "siteSettings"][0]{
   },
   heroHeading,
   heroText,
+  menuHeading,
+  menuText,
   aboutHeading,
   aboutText,
+  contactHeading,
   phone,
   email,
   address,
   openingHours,
   orderUrl,
+  orderCtaLabel,
   facebookUrl,
-  instagramUrl
+  instagramUrl,
+  seoTitle,
+  seoDescription
 }`)
 
 export const MENU_CARDS_QUERY = defineQuery(`*[_type == "menuCard"] | order(sortOrder asc){

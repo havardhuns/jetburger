@@ -80,15 +80,21 @@ export type SiteSettings = {
   };
   heroHeading?: string;
   heroText?: string;
+  menuHeading?: string;
+  menuText?: string;
   aboutHeading?: string;
   aboutText?: string;
+  contactHeading?: string;
   phone?: string;
   email?: string;
   address?: string;
   openingHours?: string;
   orderUrl?: string;
+  orderCtaLabel?: string;
   facebookUrl?: string;
   instagramUrl?: string;
+  seoTitle?: string;
+  seoDescription?: string;
 };
 
 export type SanityImagePaletteSwatch = {
@@ -212,22 +218,28 @@ export type AllSanitySchemaTypes =
 
 // Source: sanity/lib/queries.ts
 // Variable: SITE_SETTINGS_QUERY
-// Query: *[_id == "siteSettings"][0]{  logo {    asset->{ _id, url, metadata { lqip, dimensions { width, height } } },    alt,    hotspot,    crop  },  heroImage {    asset->{ _id, url, metadata { lqip, dimensions { width, height } } },    alt,    hotspot,    crop  },  heroHeading,  heroText,  aboutHeading,  aboutText,  phone,  email,  address,  openingHours,  orderUrl,  facebookUrl,  instagramUrl}
+// Query: *[_id == "siteSettings"][0]{  logo {    asset->{ _id, url, metadata { lqip, dimensions { width, height } } },    alt,    hotspot,    crop  },  heroImage {    asset->{ _id, url, metadata { lqip, dimensions { width, height } } },    alt,    hotspot,    crop  },  heroHeading,  heroText,  menuHeading,  menuText,  aboutHeading,  aboutText,  contactHeading,  phone,  email,  address,  openingHours,  orderUrl,  orderCtaLabel,  facebookUrl,  instagramUrl,  seoTitle,  seoDescription}
 export type SITE_SETTINGS_QUERY_RESULT =
   | {
       logo: null;
       heroImage: null;
       heroHeading: null;
       heroText: null;
+      menuHeading: null;
+      menuText: null;
       aboutHeading: null;
       aboutText: null;
+      contactHeading: null;
       phone: null;
       email: null;
       address: null;
       openingHours: null;
       orderUrl: null;
+      orderCtaLabel: null;
       facebookUrl: null;
       instagramUrl: null;
+      seoTitle: null;
+      seoDescription: null;
     }
   | {
       logo: {
@@ -264,15 +276,21 @@ export type SITE_SETTINGS_QUERY_RESULT =
       } | null;
       heroHeading: string | null;
       heroText: string | null;
+      menuHeading: string | null;
+      menuText: string | null;
       aboutHeading: string | null;
       aboutText: string | null;
+      contactHeading: string | null;
       phone: string | null;
       email: string | null;
       address: string | null;
       openingHours: string | null;
       orderUrl: string | null;
+      orderCtaLabel: string | null;
       facebookUrl: string | null;
       instagramUrl: string | null;
+      seoTitle: string | null;
+      seoDescription: string | null;
     }
   | null;
 
@@ -304,7 +322,7 @@ export type MENU_CARDS_QUERY_RESULT = Array<{
 import "@sanity/client";
 declare module "@sanity/client" {
   interface SanityQueries {
-    '*[_id == "siteSettings"][0]{\n  logo {\n    asset->{ _id, url, metadata { lqip, dimensions { width, height } } },\n    alt,\n    hotspot,\n    crop\n  },\n  heroImage {\n    asset->{ _id, url, metadata { lqip, dimensions { width, height } } },\n    alt,\n    hotspot,\n    crop\n  },\n  heroHeading,\n  heroText,\n  aboutHeading,\n  aboutText,\n  phone,\n  email,\n  address,\n  openingHours,\n  orderUrl,\n  facebookUrl,\n  instagramUrl\n}': SITE_SETTINGS_QUERY_RESULT;
+    '*[_id == "siteSettings"][0]{\n  logo {\n    asset->{ _id, url, metadata { lqip, dimensions { width, height } } },\n    alt,\n    hotspot,\n    crop\n  },\n  heroImage {\n    asset->{ _id, url, metadata { lqip, dimensions { width, height } } },\n    alt,\n    hotspot,\n    crop\n  },\n  heroHeading,\n  heroText,\n  menuHeading,\n  menuText,\n  aboutHeading,\n  aboutText,\n  contactHeading,\n  phone,\n  email,\n  address,\n  openingHours,\n  orderUrl,\n  orderCtaLabel,\n  facebookUrl,\n  instagramUrl,\n  seoTitle,\n  seoDescription\n}': SITE_SETTINGS_QUERY_RESULT;
     '*[_type == "menuCard"] | order(sortOrder asc){\n  _id,\n  title,\n  image {\n    asset->{ _id, url, metadata { lqip, dimensions { width, height } } },\n    alt,\n    hotspot,\n    crop\n  }\n}': MENU_CARDS_QUERY_RESULT;
   }
 }
