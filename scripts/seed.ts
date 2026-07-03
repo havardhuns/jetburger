@@ -33,7 +33,7 @@ function imageValue(assetId: string, alt: string) {
 
 async function seed() {
   const [logoId, storefrontId, burgereId, pizzaId, sidesId] = await Promise.all([
-    uploadImage('logo.jpg'),
+    uploadImage('logo.svg'),
     uploadImage('storefront.jpg'),
     uploadImage('meny-burgere.jpg'),
     uploadImage('meny-pizza.jpg'),

@@ -37,8 +37,17 @@ export default async function Home() {
   const telHref = phone ? `tel:${phone.replace(/\s/g, "")}` : undefined;
   const orderCtaLabel = settings.orderCtaLabel ?? "Bestill på nett";
 
+  // SVG logos are served as-is: Sanity rasterizes SVGs when transforms are
+  // applied, and next/image won't optimize SVG sources.
+  const logoIsSvg = settings.logo?.asset?._id.endsWith("-svg") ?? false;
   const logo = settings.logo?.asset
-    ? { src: urlFor(settings.logo).width(80).height(80).fit("crop").url(), alt: settings.logo.alt ?? "Jetburger" }
+    ? {
+        src: logoIsSvg
+          ? settings.logo.asset.url!
+          : urlFor(settings.logo).width(80).height(80).fit("crop").url(),
+        alt: settings.logo.alt ?? "Jetburger",
+        unoptimized: logoIsSvg,
+      }
     : undefined;
 
   const hero = settings.heroImage?.asset
@@ -79,7 +88,7 @@ export default async function Home() {
         <nav className="mx-auto flex h-16 max-w-[1120px] items-center justify-between gap-6 px-5 lg:px-6">
           <a href="#hjem" className="flex items-center gap-2.5">
             {logo && (
-              <Image src={logo.src} alt={logo.alt} width={40} height={40} className="size-10 rounded-lg object-cover" />
+              <Image src={logo.src} alt={logo.alt} width={40} height={40} unoptimized={logo.unoptimized} className="size-10 rounded-lg object-cover" />
             )}
             <span className="text-lg font-extrabold tracking-tight">Jetburger</span>
           </a>
@@ -348,7 +357,7 @@ export default async function Home() {
       <footer className="border-t border-border">
         <div className="mx-auto flex max-w-[1120px] flex-wrap items-center justify-between gap-3 px-5 py-7 lg:px-6">
           <div className="flex items-center gap-2.5">
-            {logo && <Image src={logo.src} alt="" width={28} height={28} className="size-7 rounded-md object-cover" />}
+            {logo && <Image src={logo.src} alt="" width={28} height={28} unoptimized={logo.unoptimized} className="size-7 rounded-md object-cover" />}
             <span className="text-[13px] text-muted-foreground">© {new Date().getFullYear()} Jetburger · Evje</span>
           </div>
           <span className="text-[13px] text-muted-foreground">
