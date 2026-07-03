@@ -100,15 +100,3 @@
     @apply font-sans scroll-smooth;
   }
 }
-
-/* react-medium-image-zoom: match the dark theme, no zoom-in cursor */
-[data-rmiz-content="found"] img {
-  cursor: default;
-}
-[data-rmiz-modal-overlay="visible"] {
-  background-color: rgb(10 8 7 / 0.88);
-}
-[data-rmiz-btn-unzoom] {
-  background-color: rgb(20 17 16 / 0.7);
-  color: var(--foreground);
-}

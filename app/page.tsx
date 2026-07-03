@@ -49,19 +49,26 @@ export default async function Home() {
       }
     : undefined;
 
-  const cards: MenuGridCard[] = menuCards.flatMap((card) =>
-    card.image?.asset
-      ? [
-          {
-            key: card._id,
-            title: card.title ?? "Meny",
-            src: urlFor(card.image).width(720).url(),
-            zoomSrc: urlFor(card.image).width(1454).url(),
-            lqip: card.image.asset.metadata?.lqip ?? undefined,
-          },
-        ]
-      : [],
-  );
+  const cards: MenuGridCard[] = menuCards.flatMap((card) => {
+    if (!card.image?.asset) return [];
+    const dimensions = card.image.asset.metadata?.dimensions;
+    const zoomWidth = dimensions?.width ? Math.min(dimensions.width, 2048) : undefined;
+    const zoomHeight =
+      dimensions?.width && dimensions.height && zoomWidth
+        ? Math.round((dimensions.height / dimensions.width) * zoomWidth)
+        : undefined;
+    return [
+      {
+        key: card._id,
+        title: card.title ?? "Meny",
+        src: urlFor(card.image).width(720).url(),
+        zoomSrc: zoomWidth ? urlFor(card.image).width(zoomWidth).url() : urlFor(card.image).url(),
+        zoomWidth,
+        zoomHeight,
+        lqip: card.image.asset.metadata?.lqip ?? undefined,
+      },
+    ];
+  });
 
   const aboutParagraphs = (aboutText ?? "").split(/\n+/).filter(Boolean);
 
