@@ -140,7 +140,7 @@ export default async function Home() {
           blurDataURL={hero.lqip}
           className="object-cover object-[center_40%]"
         />
-        <div className="absolute inset-0 bg-gradient-to-b from-background/80 via-background/60 to-background" />
+        <div className="absolute inset-0 bg-gradient-to-b from-background/90 via-background/75 to-background" />
         <div className="relative mx-auto flex max-w-[1120px] flex-col items-start gap-6 px-5 pt-[clamp(72px,12vw,120px)] pb-[clamp(88px,13vw,140px)] lg:px-6">
           <FadeUp delay={0.08}>
             <h1 className="max-w-[15ch] text-[clamp(40px,6vw,72px)] leading-[1.04] font-black tracking-tighter">
@@ -148,7 +148,7 @@ export default async function Home() {
             </h1>
           </FadeUp>
           <FadeUp delay={0.16}>
-            <p className="max-w-[46ch] text-lg leading-relaxed text-muted-foreground">{site.heroText}</p>
+            <p className="max-w-[46ch] text-lg leading-relaxed text-foreground/90">{site.heroText}</p>
           </FadeUp>
           <FadeUp delay={0.24} className="mt-2 flex flex-wrap gap-3">
             <Button
@@ -162,14 +162,14 @@ export default async function Home() {
             <Button
               size="lg"
               variant="outline"
-              className="h-12 bg-background/40 px-7 text-base font-semibold hover:bg-secondary"
+              className="h-12 bg-background/60 px-7 text-base font-semibold hover:bg-background/85 hover:text-foreground"
               nativeButton={false}
               render={<a href="#meny" />}
             >
               Se menyen
             </Button>
           </FadeUp>
-          <FadeUp delay={0.32} className="mt-3 flex flex-wrap items-center gap-x-4 gap-y-2.5 text-sm font-medium text-muted-foreground">
+          <FadeUp delay={0.32} className="mt-3 flex flex-wrap items-center gap-x-4 gap-y-2.5 text-sm font-medium text-foreground/80">
             <span className="flex items-center gap-2">
               <Clock className="size-4" />
               Åpent {site.openingHours.toLowerCase()}
@@ -307,7 +307,7 @@ export default async function Home() {
             src={`https://www.google.com/maps?q=${encodeURIComponent(site.address)}&output=embed`}
             title="Kart til Jetburger"
             loading="lazy"
-            className="min-h-[380px] w-full rounded-xl border border-border grayscale-[0.35] contrast-105"
+            className="min-h-[380px] w-full rounded-xl border border-border invert-[.92] hue-rotate-180 grayscale-[0.25] contrast-[.95]"
           />
         </div>
       </section>
