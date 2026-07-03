@@ -132,7 +132,7 @@ export default async function Home() {
             <div className="absolute inset-0 bg-gradient-to-b from-background/90 via-background/75 to-background" />
           </>
         )}
-        <div className="relative mx-auto flex max-w-[1120px] flex-col items-start gap-6 px-5 pt-[clamp(72px,12vw,120px)] pb-[clamp(88px,13vw,140px)] lg:px-6">
+        <div className="relative mx-auto flex min-h-[calc(100svh-4rem)] max-w-[1120px] flex-col items-start justify-center gap-6 px-5 pt-[clamp(72px,12vw,120px)] pb-[clamp(88px,13vw,140px)] md:min-h-0 md:justify-start lg:px-6">
           <FadeUp delay={0.08}>
             <h1 className="max-w-[15ch] text-[clamp(40px,6vw,72px)] leading-[1.04] font-black tracking-tighter">
               <Heading text={heroHeading ?? "Jetburger"} />
