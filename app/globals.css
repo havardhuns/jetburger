@@ -99,4 +99,8 @@
   html {
     @apply font-sans scroll-smooth;
   }
+  /* Keep anchor targets clear of the sticky 64px nav */
+  section[id] {
+    @apply scroll-mt-16;
+  }
 }
