@@ -6,11 +6,15 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "typegen": "sanity schema extract && sanity typegen generate",
+    "seed": "sanity exec scripts/seed.ts --with-user-token"
   },
   "dependencies": {
     "@base-ui/react": "^1.6.0",
     "@icons-pack/react-simple-icons": "^13.13.0",
+    "@sanity/client": "^7.23.0",
+    "@sanity/icons": "^4.1.0",
     "@sanity/image-url": "^2.1.1",
     "@sanity/vision": "^5.31.1",
     "class-variance-authority": "^0.7.1",
