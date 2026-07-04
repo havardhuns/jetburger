@@ -4,6 +4,7 @@ import { Hero } from "@/components/site/hero";
 import { MenuSection } from "@/components/site/menu-section";
 import { SiteFooter } from "@/components/site/site-footer";
 import { SiteHeader } from "@/components/site/site-header";
+import { StructuredData } from "@/components/site/structured-data";
 import { deriveMenuCards, deriveSettings } from "@/lib/site-data";
 import { sanityFetch } from "@/sanity/lib/live";
 import { MENU_CARDS_QUERY, SITE_SETTINGS_QUERY } from "@/sanity/lib/queries";
@@ -23,6 +24,7 @@ export default async function Home() {
 
   return (
     <div className="flex-1">
+      <StructuredData settings={settings} />
       <SiteHeader settings={settings} />
       <Hero settings={settings} />
       <MenuSection settings={settings} menuCards={menuCards} />

@@ -2,6 +2,8 @@ import type { MenuGridCard } from "@/components/site/menu-grid";
 import { urlFor } from "@/sanity/lib/image";
 import type { MENU_CARDS_QUERY_RESULT, SITE_SETTINGS_QUERY_RESULT } from "@/sanity.types";
 
+export const SITE_URL = "https://jetburger.no";
+
 export function deriveSettings(settings: NonNullable<SITE_SETTINGS_QUERY_RESULT>) {
   // SVG logos are served as-is: Sanity rasterizes SVGs when transforms are
   // applied, and next/image won't optimize SVG sources.
