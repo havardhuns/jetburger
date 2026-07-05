@@ -11,5 +11,5 @@ const token = process.env.SANITY_API_READ_TOKEN
 
 export const { sanityFetch, SanityLive } = defineLive({
   client,
-  ...(token ? { serverToken: token, browserToken: token } : {}),
+  ...(token && { serverToken: token, browserToken: token }),
 });

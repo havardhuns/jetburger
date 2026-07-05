@@ -22,12 +22,12 @@ export function MenuGrid({ cards }: { cards: MenuGridCard[] }) {
   return (
     <>
       <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
-        {cards.map((card, i) => (
+        {cards.map((card, index_) => (
           <button
             key={card.key}
             type="button"
             aria-label={`Vis ${card.title} i full størrelse`}
-            onClick={() => setIndex(i)}
+            onClick={() => setIndex(index_)}
             className="overflow-hidden rounded-xl border border-border bg-card transition-[transform,border-color] duration-200 outline-none hover:-translate-y-1 hover:border-primary/45 focus-visible:ring-3 focus-visible:ring-ring/30"
           >
             <Image

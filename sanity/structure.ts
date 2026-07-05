@@ -1,7 +1,7 @@
 import { CogIcon } from '@sanity/icons'
 import type { StructureResolver } from 'sanity/structure'
 
-const SINGLETONS = ['siteSettings']
+const SINGLETONS = new Set(['siteSettings'])
 
 // https://www.sanity.io/docs/structure-builder-cheat-sheet
 export const structure: StructureResolver = (S) =>
@@ -19,6 +19,6 @@ export const structure: StructureResolver = (S) =>
         ),
       S.divider(),
       ...S.documentTypeListItems().filter(
-        (listItem) => !SINGLETONS.includes(listItem.getId() as string),
+        (listItem) => !SINGLETONS.has(listItem.getId() as string),
       ),
     ])

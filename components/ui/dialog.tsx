@@ -7,25 +7,25 @@ import { cn } from "@/lib/utils"
 import { Button } from "@/components/ui/button"
 import { XIcon } from "lucide-react"
 
-function Dialog({ ...props }: DialogPrimitive.Root.Props) {
-  return <DialogPrimitive.Root data-slot="dialog" {...props} />
+function Dialog({ ...properties }: DialogPrimitive.Root.Props) {
+  return <DialogPrimitive.Root data-slot="dialog" {...properties} />
 }
 
-function DialogTrigger({ ...props }: DialogPrimitive.Trigger.Props) {
-  return <DialogPrimitive.Trigger data-slot="dialog-trigger" {...props} />
+function DialogTrigger({ ...properties }: DialogPrimitive.Trigger.Props) {
+  return <DialogPrimitive.Trigger data-slot="dialog-trigger" {...properties} />
 }
 
-function DialogPortal({ ...props }: DialogPrimitive.Portal.Props) {
-  return <DialogPrimitive.Portal data-slot="dialog-portal" {...props} />
+function DialogPortal({ ...properties }: DialogPrimitive.Portal.Props) {
+  return <DialogPrimitive.Portal data-slot="dialog-portal" {...properties} />
 }
 
-function DialogClose({ ...props }: DialogPrimitive.Close.Props) {
-  return <DialogPrimitive.Close data-slot="dialog-close" {...props} />
+function DialogClose({ ...properties }: DialogPrimitive.Close.Props) {
+  return <DialogPrimitive.Close data-slot="dialog-close" {...properties} />
 }
 
 function DialogOverlay({
   className,
-  ...props
+  ...properties
 }: DialogPrimitive.Backdrop.Props) {
   return (
     <DialogPrimitive.Backdrop
@@ -34,7 +34,7 @@ function DialogOverlay({
         "fixed inset-0 isolate z-50 bg-black/30 duration-100 supports-backdrop-filter:backdrop-blur-sm data-open:animate-in data-open:fade-in-0 data-closed:animate-out data-closed:fade-out-0",
         className
       )}
-      {...props}
+      {...properties}
     />
   )
 }
@@ -43,7 +43,7 @@ function DialogContent({
   className,
   children,
   showCloseButton = true,
-  ...props
+  ...properties
 }: DialogPrimitive.Popup.Props & {
   showCloseButton?: boolean
 }) {
@@ -56,7 +56,7 @@ function DialogContent({
           "fixed top-1/2 left-1/2 z-50 grid w-full max-w-[calc(100%-2rem)] -translate-x-1/2 -translate-y-1/2 gap-6 rounded-[min(var(--radius-4xl),24px)] bg-popover p-6 text-sm text-popover-foreground shadow-xl ring-1 ring-foreground/5 duration-100 outline-none sm:max-w-md dark:ring-foreground/10 data-open:animate-in data-open:fade-in-0 data-open:zoom-in-95 data-closed:animate-out data-closed:fade-out-0 data-closed:zoom-out-95",
           className
         )}
-        {...props}
+        {...properties}
       >
         {children}
         {showCloseButton && (
@@ -80,12 +80,12 @@ function DialogContent({
   )
 }
 
-function DialogHeader({ className, ...props }: React.ComponentProps<"div">) {
+function DialogHeader({ className, ...properties }: React.ComponentProps<"div">) {
   return (
     <div
       data-slot="dialog-header"
       className={cn("flex flex-col gap-1.5", className)}
-      {...props}
+      {...properties}
     />
   )
 }
@@ -94,7 +94,7 @@ function DialogFooter({
   className,
   showCloseButton = false,
   children,
-  ...props
+  ...properties
 }: React.ComponentProps<"div"> & {
   showCloseButton?: boolean
 }) {
@@ -105,7 +105,7 @@ function DialogFooter({
         "flex flex-col-reverse gap-2 sm:flex-row sm:justify-end",
         className
       )}
-      {...props}
+      {...properties}
     >
       {children}
       {showCloseButton && (
@@ -117,7 +117,7 @@ function DialogFooter({
   )
 }
 
-function DialogTitle({ className, ...props }: DialogPrimitive.Title.Props) {
+function DialogTitle({ className, ...properties }: DialogPrimitive.Title.Props) {
   return (
     <DialogPrimitive.Title
       data-slot="dialog-title"
@@ -125,14 +125,14 @@ function DialogTitle({ className, ...props }: DialogPrimitive.Title.Props) {
         "font-heading text-base leading-none font-medium",
         className
       )}
-      {...props}
+      {...properties}
     />
   )
 }
 
 function DialogDescription({
   className,
-  ...props
+  ...properties
 }: DialogPrimitive.Description.Props) {
   return (
     <DialogPrimitive.Description
@@ -141,7 +141,7 @@ function DialogDescription({
         "text-sm text-muted-foreground *:[a]:underline *:[a]:underline-offset-3 *:[a]:hover:text-foreground",
         className
       )}
-      {...props}
+      {...properties}
     />
   )
 }

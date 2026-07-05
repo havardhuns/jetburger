@@ -14,7 +14,7 @@ export function StructuredData({ settings }: { settings: Settings }) {
     url: SITE_URL,
     image: settings.hero?.src,
     logo: settings.logo?.src,
-    telephone: settings.phone ? `+47${settings.phone.replace(/\s/g, "")}` : undefined,
+    telephone: settings.phone ? `+47${settings.phone.replaceAll(/\s/g, "")}` : undefined,
     email: settings.email,
     servesCuisine: ["Burger", "Pizza"],
     menu: `${SITE_URL}/#meny`,

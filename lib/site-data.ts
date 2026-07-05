@@ -18,7 +18,7 @@ export function deriveSettings(settings: NonNullable<SITE_SETTINGS_QUERY_RESULT>
     aboutParagraphs: (settings.aboutText ?? "").split(/\n+/).filter(Boolean),
     contactHeading: settings.contactHeading,
     phone: settings.phone,
-    telHref: settings.phone ? `tel:${settings.phone.replace(/\s/g, "")}` : undefined,
+    telHref: settings.phone ? `tel:${settings.phone.replaceAll(/\s/g, "")}` : undefined,
     email: settings.email,
     address: settings.address,
     openingHours: settings.openingHours,

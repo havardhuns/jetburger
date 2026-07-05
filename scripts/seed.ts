@@ -82,19 +82,16 @@ async function seed() {
       console.log(`Menu card "${card.title}" already exists, skipping`)
       continue
     }
-    const doc = await client.create({
+    const document_ = await client.create({
       _type: 'menuCard',
       title: card.title,
       image: imageValue(card.assetId, card.alt),
       sortOrder: card.sortOrder,
     })
-    console.log(`Created menu card "${card.title}" (${doc._id})`)
+    console.log(`Created menu card "${card.title}" (${document_._id})`)
   }
 
   console.log('Done.')
 }
 
-seed().catch((err) => {
-  console.error(err)
-  process.exit(1)
-})
+await seed()
