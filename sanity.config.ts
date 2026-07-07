@@ -21,9 +21,10 @@ export default defineConfig({
   dataset,
   // Add and edit the content schema in the './sanity/schemaTypes' folder
   schema,
+  releases: {enabled: false},
   plugins: [
     nbNOLocale(),
-    structureTool({structure}),
+    structureTool({structure, title: 'Innhold'}),
     // Vision is for querying with GROQ from inside the Studio
     // https://www.sanity.io/docs/the-vision-plugin
     visionTool({defaultApiVersion: apiVersion}),
