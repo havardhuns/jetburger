@@ -48,7 +48,7 @@ export function Hero({ settings }: { settings: Settings }) {
             <p className="max-w-[46ch] text-lg leading-relaxed text-foreground/90">{heroText}</p>
           </FadeUp>
         )}
-        <FadeUp delay={0.24} className="mt-2 flex flex-wrap gap-3">
+        <FadeUp delay={0.24} nosnippet className="mt-2 flex flex-wrap gap-3">
           {orderUrl && (
             <Button
               size="lg"
