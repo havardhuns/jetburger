@@ -3,12 +3,18 @@ import { defineField, defineType } from 'sanity'
 
 export const siteSettings = defineType({
   name: 'siteSettings',
-  title: 'Innstillinger',
+  title: 'Nettsiden',
   type: 'document',
   icon: CogIcon,
+  groups: [
+    { name: 'innhold', title: 'Innhold', default: true },
+    { name: 'kontakt', title: 'Kontakt & bestilling' },
+    { name: 'seo', title: 'Søkeoptimalisering' },
+  ],
   fields: [
     defineField({
       name: 'logo',
+      group: 'innhold',
       title: 'Logo',
       type: 'image',
       options: { hotspot: true },
@@ -22,6 +28,7 @@ export const siteSettings = defineType({
     }),
     defineField({
       name: 'heroImage',
+      group: 'innhold',
       title: 'Hovedbilde',
       description: 'Bakgrunnsbilde i toppen av siden, brukes også i «Om oss»',
       type: 'image',
@@ -36,34 +43,40 @@ export const siteSettings = defineType({
     }),
     defineField({
       name: 'heroHeading',
+      group: 'innhold',
       title: 'Overskrift',
       type: 'string',
       validation: (rule) => rule.required(),
     }),
     defineField({
       name: 'heroText',
+      group: 'innhold',
       title: 'Ingress',
       type: 'text',
       rows: 3,
     }),
     defineField({
       name: 'menuHeading',
+      group: 'innhold',
       title: 'Meny – overskrift',
       type: 'string',
     }),
     defineField({
       name: 'menuText',
+      group: 'innhold',
       title: 'Meny – ingress',
       type: 'text',
       rows: 2,
     }),
     defineField({
       name: 'aboutHeading',
+      group: 'innhold',
       title: 'Om oss – overskrift',
       type: 'string',
     }),
     defineField({
       name: 'aboutText',
+      group: 'innhold',
       title: 'Om oss – tekst',
       description: 'Tomme linjer gir nye avsnitt',
       type: 'text',
@@ -71,66 +84,77 @@ export const siteSettings = defineType({
     }),
     defineField({
       name: 'contactHeading',
+      group: 'innhold',
       title: 'Kontakt – overskrift',
       type: 'string',
     }),
     defineField({
       name: 'phone',
+      group: 'kontakt',
       title: 'Telefon',
       type: 'string',
     }),
     defineField({
       name: 'email',
+      group: 'kontakt',
       title: 'E-post',
       type: 'string',
       validation: (rule) => rule.email(),
     }),
     defineField({
       name: 'address',
+      group: 'kontakt',
       title: 'Adresse',
       type: 'string',
     }),
     defineField({
       name: 'openingHours',
+      group: 'kontakt',
       title: 'Åpningstider',
       type: 'string',
     }),
     defineField({
       name: 'orderUrl',
+      group: 'kontakt',
       title: 'Bestillingslenke',
       type: 'url',
       validation: (rule) => rule.uri({ scheme: ['http', 'https'] }),
     }),
     defineField({
       name: 'orderCtaLabel',
+      group: 'kontakt',
       title: 'Bestillingsknapp – tekst',
       type: 'string',
     }),
     defineField({
       name: 'facebookUrl',
+      group: 'kontakt',
       title: 'Facebook',
       type: 'url',
       validation: (rule) => rule.uri({ scheme: ['http', 'https'] }),
     }),
     defineField({
       name: 'instagramUrl',
+      group: 'kontakt',
       title: 'Instagram',
       type: 'url',
       validation: (rule) => rule.uri({ scheme: ['http', 'https'] }),
     }),
     defineField({
       name: 'seoTitle',
+      group: 'seo',
       title: 'SEO – sidetittel',
       type: 'string',
     }),
     defineField({
       name: 'seoDescription',
+      group: 'seo',
       title: 'SEO – beskrivelse',
       type: 'text',
       rows: 3,
     }),
   ],
   preview: {
-    prepare: () => ({ title: 'Innstillinger' }),
+    prepare: () => ({ title: 'Nettsiden' }),
   },
 })

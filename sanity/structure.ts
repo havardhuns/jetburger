@@ -9,13 +9,13 @@ export const structure: StructureResolver = (S) =>
     .title('Innhold')
     .items([
       S.listItem()
-        .title('Innstillinger')
+        .title('Nettsiden')
         .icon(CogIcon)
         .child(
           S.document()
             .schemaType('siteSettings')
             .documentId('siteSettings')
-            .title('Innstillinger'),
+            .title('Nettsiden'),
         ),
       S.divider(),
       ...S.documentTypeListItems().filter(
