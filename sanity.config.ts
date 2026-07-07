@@ -25,9 +25,10 @@ export default defineConfig({
   plugins: [
     nbNOLocale(),
     structureTool({structure, title: 'Innhold'}),
-    // Vision is for querying with GROQ from inside the Studio
+    // Vision (GROQ playground) is a developer tool — dev only, so the
+    // deployed Studio shows editors nothing but Innhold and Statistikk.
     // https://www.sanity.io/docs/the-vision-plugin
-    visionTool({defaultApiVersion: apiVersion}),
+    ...(process.env.NODE_ENV === 'development' ? [visionTool({defaultApiVersion: apiVersion})] : []),
   ],
   tools: [statistikkTool],
 })
