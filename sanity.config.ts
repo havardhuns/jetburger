@@ -22,6 +22,7 @@ export default defineConfig({
   // Add and edit the content schema in the './sanity/schemaTypes' folder
   schema,
   releases: {enabled: false},
+  scheduledPublishing: {enabled: false},
   plugins: [
     nbNOLocale(),
     structureTool({structure, title: 'Innhold'}),
