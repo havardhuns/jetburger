@@ -1,11 +1,11 @@
-import { CogIcon } from '@sanity/icons'
+import { HomeIcon } from '@sanity/icons'
 import { defineField, defineType } from 'sanity'
 
 export const siteSettings = defineType({
   name: 'siteSettings',
   title: 'Nettsiden',
   type: 'document',
-  icon: CogIcon,
+  icon: HomeIcon,
   groups: [
     { name: 'innhold', title: 'Innhold', default: true },
     { name: 'kontakt', title: 'Kontakt & bestilling' },

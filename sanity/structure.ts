@@ -1,4 +1,4 @@
-import { CogIcon } from '@sanity/icons'
+import { HomeIcon } from '@sanity/icons'
 import type { StructureResolver } from 'sanity/structure'
 
 const SINGLETONS = new Set(['siteSettings'])
@@ -10,7 +10,7 @@ export const structure: StructureResolver = (S) =>
     .items([
       S.listItem()
         .title('Nettsiden')
-        .icon(CogIcon)
+        .icon(HomeIcon)
         .child(
           S.document()
             .schemaType('siteSettings')
