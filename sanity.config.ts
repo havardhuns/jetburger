@@ -31,5 +31,7 @@ export default defineConfig({
     // https://www.sanity.io/docs/the-vision-plugin
     ...(process.env.NODE_ENV === 'development' ? [visionTool({defaultApiVersion: apiVersion})] : []),
   ],
-  tools: [statistikkTool],
+  // With releases disabled, the releases tool lingers as an (untranslated)
+  // "Scheduled Drafts" tab — drop it entirely.
+  tools: (prev) => [...prev.filter((tool) => tool.name !== 'releases'), statistikkTool],
 })
