@@ -98,7 +98,7 @@ export function ContactSection({ settings }: { settings: Settings }) {
         </div>
         {address && (
           <iframe
-            src={`https://www.google.com/maps?q=${encodeURIComponent(address)}&output=embed`}
+            src={`https://www.google.com/maps?q=${encodeURIComponent(`Jetburger, ${address}`)}&output=embed`}
             title="Kart til Jetburger"
             loading="lazy"
             className="min-h-[380px] w-full rounded-xl border border-border invert-[.92] hue-rotate-180 grayscale-[0.25] contrast-[.95]"
