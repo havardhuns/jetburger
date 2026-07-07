@@ -37,7 +37,7 @@ export function SiteHeader({ settings }: { settings: Settings }) {
             <Button
               className="ml-3 font-bold"
               nativeButton={false}
-              render={<a href={orderUrl} target="_blank" rel="noopener" />}
+              render={<a href={orderUrl} target="_blank" rel="noopener" data-umami-event="bestill-klikk" data-umami-event-sted="header" />}
             >
               <ShoppingCart data-icon="inline-start" />
               {orderCtaLabel}

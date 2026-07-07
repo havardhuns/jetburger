@@ -14,7 +14,7 @@ export function SiteFooter({ settings }: { settings: Settings }) {
         <span className="text-[13px] text-muted-foreground">
           {orderUrl && (
             <>
-              <a href={orderUrl} target="_blank" rel="noopener" className="font-semibold hover:text-foreground">
+              <a href={orderUrl} target="_blank" rel="noopener" data-umami-event="bestill-klikk" data-umami-event-sted="footer" className="font-semibold hover:text-foreground">
                 {orderCtaLabel}
               </a>{" "}
               eller{" "}

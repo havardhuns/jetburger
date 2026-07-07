@@ -15,7 +15,7 @@ export function MenuSection({ settings, menuCards }: { settings: Settings; menuC
           {orderUrl && (
             <>
               {" "}
-              <a href={orderUrl} target="_blank" rel="noopener" className="font-semibold text-primary">
+              <a href={orderUrl} target="_blank" rel="noopener" data-umami-event="bestill-klikk" data-umami-event-sted="meny" className="font-semibold text-primary">
                 {orderCtaLabel}
               </a>
               {telHref ? "," : "."}

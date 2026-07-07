@@ -11,6 +11,7 @@ import {structureTool} from 'sanity/structure'
 // Go to https://www.sanity.io/docs/api-versioning to learn how API versioning works
 import {apiVersion, dataset, projectId} from './sanity/env'
 import {schema} from './sanity/schemaTypes'
+import {statistikkTool} from './sanity/statistikkTool'
 import {structure} from './sanity/structure'
 
 export default defineConfig({
@@ -25,4 +26,5 @@ export default defineConfig({
     // https://www.sanity.io/docs/the-vision-plugin
     visionTool({defaultApiVersion: apiVersion}),
   ],
+  tools: [statistikkTool],
 })

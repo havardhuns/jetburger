@@ -1,9 +1,11 @@
 import type { Metadata } from "next";
 import { Archivo, Geist_Mono } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 import { sanityFetch, SanityLive } from "@/sanity/lib/live";
 import { urlFor } from "@/sanity/lib/image";
 import { SITE_SETTINGS_QUERY } from "@/sanity/lib/queries";
+import { UMAMI_WEBSITE_ID } from "@/lib/analytics";
 import { SITE_URL } from "@/lib/site-data";
 import { cn } from "@/lib/utils";
 
@@ -53,6 +55,12 @@ export default function RootLayout({
       <body className="min-h-full flex flex-col">
         {children}
         <SanityLive />
+        {/* data-domains keeps localhost and preview deploys out of the stats */}
+        <Script
+          src="https://cloud.umami.is/script.js"
+          data-website-id={UMAMI_WEBSITE_ID}
+          data-domains="jetburger.no"
+        />
       </body>
     </html>
   );

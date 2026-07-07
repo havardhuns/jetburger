@@ -54,7 +54,7 @@ export function Hero({ settings }: { settings: Settings }) {
               size="lg"
               className="h-12 px-7 text-base font-bold"
               nativeButton={false}
-              render={<a href={orderUrl} target="_blank" rel="noopener" />}
+              render={<a href={orderUrl} target="_blank" rel="noopener" data-umami-event="bestill-klikk" data-umami-event-sted="hero" />}
             >
               {orderCtaLabel}
             </Button>
