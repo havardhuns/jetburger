@@ -114,6 +114,23 @@ export const siteSettings = defineType({
       type: 'string',
     }),
     defineField({
+      name: 'orderingEnabled',
+      group: 'kontakt',
+      title: 'Ta imot bestillinger på nett',
+      description: 'Skru av for å midlertidig deaktivere bestillingsknappene',
+      type: 'boolean',
+      initialValue: true,
+    }),
+    defineField({
+      name: 'orderingDisabledMessage',
+      group: 'kontakt',
+      title: 'Melding når bestilling er stengt',
+      description: 'Vises når noen trykker på den utgråtte bestillingsknappen mens bestilling er stengt.',
+      type: 'string',
+      hidden: ({ parent }) => parent?.orderingEnabled !== false,
+      initialValue: 'Vi tar dessverre ikke imot bestillinger på nett akkurat nå. Ring oss gjerne!',
+    }),
+    defineField({
       name: 'orderUrl',
       group: 'kontakt',
       title: 'Bestillingslenke',

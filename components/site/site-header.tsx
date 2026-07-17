@@ -2,10 +2,11 @@ import { Phone, ShoppingCart } from "lucide-react";
 import Image from "next/image";
 
 import { Button } from "@/components/ui/button";
+import { ResponsiveTooltip, ResponsiveTooltipContent, ResponsiveTooltipTrigger } from "@/components/ui/tooltip";
 import type { Settings } from "@/lib/site-data";
 
 export function SiteHeader({ settings }: { settings: Settings }) {
-  const { logo, telHref, phone, orderUrl, orderCtaLabel } = settings;
+  const { logo, telHref, phone, orderUrl, orderCtaLabel, orderingEnabled, orderingDisabledMessage } = settings;
   return (
     <header className="sticky top-0 z-50 border-b border-border bg-background/85 backdrop-blur-md">
       <nav className="mx-auto flex h-16 max-w-[1120px] items-center justify-between gap-6 px-5 lg:px-6">
@@ -33,7 +34,7 @@ export function SiteHeader({ settings }: { settings: Settings }) {
               </a>
             )}
           </div>
-          {orderUrl && (
+          {orderUrl && (orderingEnabled ? (
             <Button
               className="ml-3 font-bold"
               nativeButton={false}
@@ -42,7 +43,17 @@ export function SiteHeader({ settings }: { settings: Settings }) {
               <ShoppingCart data-icon="inline-start" />
               {orderCtaLabel}
             </Button>
-          )}
+          ) : (
+            <ResponsiveTooltip>
+              <ResponsiveTooltipTrigger
+                render={<Button className="ml-3 font-bold opacity-50 cursor-pointer" />}
+              >
+                <ShoppingCart data-icon="inline-start" />
+                {orderCtaLabel}
+              </ResponsiveTooltipTrigger>
+              <ResponsiveTooltipContent>{orderingDisabledMessage}</ResponsiveTooltipContent>
+            </ResponsiveTooltip>
+          ))}
         </div>
       </nav>
     </header>

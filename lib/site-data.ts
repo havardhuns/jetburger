@@ -24,6 +24,10 @@ export function deriveSettings(settings: NonNullable<SITE_SETTINGS_QUERY_RESULT>
     openingHours: settings.openingHours,
     orderUrl: settings.orderUrl,
     orderCtaLabel: settings.orderCtaLabel ?? "Bestill på nett",
+    orderingEnabled: settings.orderingEnabled ?? true,
+    orderingDisabledMessage:
+      settings.orderingDisabledMessage ??
+      "Vi tar dessverre ikke imot bestillinger på nett akkurat nå. Ring oss gjerne!",
     facebookUrl: settings.facebookUrl,
     instagramUrl: settings.instagramUrl,
     logo: settings.logo?.asset

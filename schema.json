@@ -442,6 +442,20 @@
         },
         "optional": true
       },
+      "orderingEnabled": {
+        "type": "objectAttribute",
+        "value": {
+          "type": "boolean"
+        },
+        "optional": true
+      },
+      "orderingDisabledMessage": {
+        "type": "objectAttribute",
+        "value": {
+          "type": "string"
+        },
+        "optional": true
+      },
       "orderUrl": {
         "type": "objectAttribute",
         "value": {

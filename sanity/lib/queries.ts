@@ -26,6 +26,8 @@ export const SITE_SETTINGS_QUERY = defineQuery(`*[_id == "siteSettings"][0]{
   openingHours,
   orderUrl,
   orderCtaLabel,
+  orderingEnabled,
+  orderingDisabledMessage,
   facebookUrl,
   instagramUrl,
   seoTitle,

@@ -38,6 +38,8 @@
   --color-primary: var(--primary);
   --color-popover-foreground: var(--popover-foreground);
   --color-popover: var(--popover);
+  --color-tooltip-foreground: var(--tooltip-foreground);
+  --color-tooltip: var(--tooltip);
   --color-card-foreground: var(--card-foreground);
   --color-card: var(--card);
   --radius-sm: calc(var(--radius) * 0.6);
@@ -58,6 +60,8 @@
   --card-foreground: #f3ebdf;
   --popover: #1d1917;
   --popover-foreground: #f3ebdf;
+  --tooltip: #292220;
+  --tooltip-foreground: #f3ebdf;
   --primary: #f5961f;
   --primary-foreground: #1a130b;
   --secondary: rgba(243, 235, 223, 0.08);

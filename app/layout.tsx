@@ -6,6 +6,7 @@ import { urlFor } from "@/sanity/lib/image";
 import { SITE_SETTINGS_QUERY } from "@/sanity/lib/queries";
 import { SITE_URL } from "@/lib/site-data";
 import { cn } from "@/lib/utils";
+import { TooltipProvider } from "@/components/ui/tooltip";
 
 const archivo = Archivo({
   variable: "--font-sans",
@@ -51,7 +52,7 @@ export default function RootLayout({
       className={cn("h-full", "antialiased", "font-sans", archivo.variable, geistMono.variable)}
     >
       <body className="min-h-full flex flex-col">
-        {children}
+        <TooltipProvider>{children}</TooltipProvider>
         <SanityLive />
       </body>
     </html>

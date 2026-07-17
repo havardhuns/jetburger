@@ -3,7 +3,8 @@ import Image from "next/image";
 import type { Settings } from "@/lib/site-data";
 
 export function SiteFooter({ settings }: { settings: Settings }) {
-  const { logo, orderUrl, orderCtaLabel, telHref, phone } = settings;
+  const { logo, orderUrl, orderCtaLabel, orderingEnabled, telHref, phone } = settings;
+  const showOrderLink = orderUrl && orderingEnabled;
   return (
     <footer className="border-t border-border">
       <div className="mx-auto flex max-w-[1120px] flex-wrap items-center justify-between gap-3 px-5 py-7 lg:px-6">
@@ -12,7 +13,7 @@ export function SiteFooter({ settings }: { settings: Settings }) {
           <span className="text-[13px] text-muted-foreground">© {new Date().getFullYear()} Jetburger · Evje</span>
         </div>
         <span className="text-[13px] text-muted-foreground">
-          {orderUrl && (
+          {showOrderLink && (
             <>
               <a href={orderUrl} target="_blank" rel="noopener" data-umami-event="bestill-klikk" data-umami-event-sted="footer" className="font-semibold hover:text-foreground">
                 {orderCtaLabel}
@@ -22,7 +23,7 @@ export function SiteFooter({ settings }: { settings: Settings }) {
           )}
           {telHref && (
             <>
-              ring{" "}
+              {showOrderLink ? "ring" : "Ring"}{" "}
               <a href={telHref} className="font-semibold hover:text-foreground">
                 {phone}
               </a>

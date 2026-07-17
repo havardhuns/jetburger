@@ -89,6 +89,8 @@ export type SiteSettings = {
   email?: string;
   address?: string;
   openingHours?: string;
+  orderingEnabled?: boolean;
+  orderingDisabledMessage?: string;
   orderUrl?: string;
   orderCtaLabel?: string;
   facebookUrl?: string;
@@ -218,7 +220,7 @@ export type AllSanitySchemaTypes =
 
 // Source: sanity/lib/queries.ts
 // Variable: SITE_SETTINGS_QUERY
-// Query: *[_id == "siteSettings"][0]{  logo {    asset->{ _id, url, metadata { lqip, dimensions { width, height } } },    alt,    hotspot,    crop  },  heroImage {    asset->{ _id, url, metadata { lqip, dimensions { width, height } } },    alt,    hotspot,    crop  },  heroHeading,  heroText,  menuHeading,  menuText,  aboutHeading,  aboutText,  contactHeading,  phone,  email,  address,  openingHours,  orderUrl,  orderCtaLabel,  facebookUrl,  instagramUrl,  seoTitle,  seoDescription}
+// Query: *[_id == "siteSettings"][0]{  logo {    asset->{ _id, url, metadata { lqip, dimensions { width, height } } },    alt,    hotspot,    crop  },  heroImage {    asset->{ _id, url, metadata { lqip, dimensions { width, height } } },    alt,    hotspot,    crop  },  heroHeading,  heroText,  menuHeading,  menuText,  aboutHeading,  aboutText,  contactHeading,  phone,  email,  address,  openingHours,  orderUrl,  orderCtaLabel,  orderingEnabled,  orderingDisabledMessage,  facebookUrl,  instagramUrl,  seoTitle,  seoDescription}
 export type SITE_SETTINGS_QUERY_RESULT =
   | {
       logo: null;
@@ -236,6 +238,8 @@ export type SITE_SETTINGS_QUERY_RESULT =
       openingHours: null;
       orderUrl: null;
       orderCtaLabel: null;
+      orderingEnabled: null;
+      orderingDisabledMessage: null;
       facebookUrl: null;
       instagramUrl: null;
       seoTitle: null;
@@ -287,6 +291,8 @@ export type SITE_SETTINGS_QUERY_RESULT =
       openingHours: string | null;
       orderUrl: string | null;
       orderCtaLabel: string | null;
+      orderingEnabled: boolean | null;
+      orderingDisabledMessage: string | null;
       facebookUrl: string | null;
       instagramUrl: string | null;
       seoTitle: string | null;
@@ -322,7 +328,7 @@ export type MENU_CARDS_QUERY_RESULT = Array<{
 import "@sanity/client";
 declare module "@sanity/client" {
   interface SanityQueries {
-    '*[_id == "siteSettings"][0]{\n  logo {\n    asset->{ _id, url, metadata { lqip, dimensions { width, height } } },\n    alt,\n    hotspot,\n    crop\n  },\n  heroImage {\n    asset->{ _id, url, metadata { lqip, dimensions { width, height } } },\n    alt,\n    hotspot,\n    crop\n  },\n  heroHeading,\n  heroText,\n  menuHeading,\n  menuText,\n  aboutHeading,\n  aboutText,\n  contactHeading,\n  phone,\n  email,\n  address,\n  openingHours,\n  orderUrl,\n  orderCtaLabel,\n  facebookUrl,\n  instagramUrl,\n  seoTitle,\n  seoDescription\n}': SITE_SETTINGS_QUERY_RESULT;
+    '*[_id == "siteSettings"][0]{\n  logo {\n    asset->{ _id, url, metadata { lqip, dimensions { width, height } } },\n    alt,\n    hotspot,\n    crop\n  },\n  heroImage {\n    asset->{ _id, url, metadata { lqip, dimensions { width, height } } },\n    alt,\n    hotspot,\n    crop\n  },\n  heroHeading,\n  heroText,\n  menuHeading,\n  menuText,\n  aboutHeading,\n  aboutText,\n  contactHeading,\n  phone,\n  email,\n  address,\n  openingHours,\n  orderUrl,\n  orderCtaLabel,\n  orderingEnabled,\n  orderingDisabledMessage,\n  facebookUrl,\n  instagramUrl,\n  seoTitle,\n  seoDescription\n}': SITE_SETTINGS_QUERY_RESULT;
     '*[_type == "menuCard"] | order(sortOrder asc){\n  _id,\n  title,\n  image {\n    asset->{ _id, url, metadata { lqip, dimensions { width, height } } },\n    alt,\n    hotspot,\n    crop\n  }\n}': MENU_CARDS_QUERY_RESULT;
   }
 }
