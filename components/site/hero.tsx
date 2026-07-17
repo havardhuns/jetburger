@@ -28,7 +28,7 @@ export function Hero({ settings }: { settings: Settings }) {
     orderCtaLabel,
     orderingEnabled,
     orderingDisabledMessage,
-    openingHours,
+    openingHoursCompact,
     telHref,
     phone,
   } = settings;
@@ -91,10 +91,10 @@ export function Hero({ settings }: { settings: Settings }) {
           </Button>
         </FadeUp>
         <FadeUp delay={0.32} className="mt-3 flex flex-col gap-x-4 gap-y-2.5 text-sm font-medium text-foreground/80 md:flex-row md:flex-wrap md:items-center">
-          {openingHours && (
+          {openingHoursCompact && (
             <span className="flex items-center gap-2">
               <Clock className="size-4" />
-              Åpent {openingHours.toLowerCase()}
+              Åpent {openingHoursCompact}
             </span>
           )}
           {telHref && (

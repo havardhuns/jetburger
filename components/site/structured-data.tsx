@@ -4,8 +4,6 @@ import { SITE_URL, type Settings } from "@/lib/site-data";
 export function StructuredData({ settings }: { settings: Settings }) {
   // "Nils Heglands veg 100, 4735 Evje" -> street / postal code / locality
   const addressMatch = settings.address?.match(/^(.+?),\s*(\d{4})\s+(.+)$/);
-  // "Alle dager 15:00–22:00" -> opens / closes (daily hours only)
-  const hoursMatch = settings.openingHours?.match(/(\d{2}:\d{2})\s*[–-]\s*(\d{2}:\d{2})/);
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -27,16 +25,7 @@ export function StructuredData({ settings }: { settings: Settings }) {
           addressCountry: "NO",
         }
       : settings.address ?? undefined,
-    openingHoursSpecification: hoursMatch
-      ? [
-          {
-            "@type": "OpeningHoursSpecification",
-            dayOfWeek: ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
-            opens: hoursMatch[1],
-            closes: hoursMatch[2],
-          },
-        ]
-      : undefined,
+    openingHoursSpecification: settings.openingHoursSpecification,
     sameAs: [settings.facebookUrl, settings.instagramUrl].filter(Boolean),
   };
 

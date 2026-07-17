@@ -23,7 +23,11 @@ export const SITE_SETTINGS_QUERY = defineQuery(`*[_id == "siteSettings"][0]{
   phone,
   email,
   address,
-  openingHours,
+  openingHours[]{
+    days,
+    opens,
+    closes
+  },
   orderUrl,
   orderCtaLabel,
   orderingEnabled,

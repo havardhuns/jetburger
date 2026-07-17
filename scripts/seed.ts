@@ -58,14 +58,16 @@ async function seed() {
       phone: '901 79 399',
       email: 'evjeftas@gmail.com',
       address: 'Nils Heglands veg 100, 4735 Evje',
-      openingHours: 'Alle dager 15:00–22:00',
+      openingHours: [
+        { _type: 'openingHoursGroup', _key: 'ukedager', days: ['man', 'tir', 'ons', 'tor', 'fre', 'lor'], opens: '15:00', closes: '22:00' },
+        { _type: 'openingHoursGroup', _key: 'sondag', days: ['son'], opens: '12:00', closes: '22:00' },
+      ],
       orderUrl: 'https://bestilling.example.no/jetburger',
       orderCtaLabel: 'Bestill på nett',
       facebookUrl: 'https://www.facebook.com/p/Jetburger-100057352394070/',
       instagramUrl: 'https://www.instagram.com/jetburger.no/',
       seoTitle: 'Jetburger – Evje',
-      seoDescription:
-        'Hjemmelagde burgere, hjemmelaget pizza og sprø fries — laget fra bunnen, midt i Evje sentrum. Åpent alle dager 15:00–22:00.',
+      seoDescription: 'Hjemmelagde burgere, hjemmelaget pizza og sprø fries — laget fra bunnen, midt i Evje sentrum.',
     })
     .commit()
   console.log('Wrote siteSettings (missing fields only)')

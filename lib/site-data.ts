@@ -1,4 +1,5 @@
 import type { MenuGridCard } from "@/components/site/menu-grid";
+import { formatOpeningHoursCompact, formatOpeningHoursLines, toOpeningHoursSpecification } from "@/lib/opening-hours";
 import { urlFor } from "@/sanity/lib/image";
 import type { MENU_CARDS_QUERY_RESULT, SITE_SETTINGS_QUERY_RESULT } from "@/sanity.types";
 
@@ -21,7 +22,9 @@ export function deriveSettings(settings: NonNullable<SITE_SETTINGS_QUERY_RESULT>
     telHref: settings.phone ? `tel:${settings.phone.replaceAll(/\s/g, "")}` : undefined,
     email: settings.email,
     address: settings.address,
-    openingHours: settings.openingHours,
+    openingHoursCompact: formatOpeningHoursCompact(settings.openingHours),
+    openingHoursLines: formatOpeningHoursLines(settings.openingHours),
+    openingHoursSpecification: toOpeningHoursSpecification(settings.openingHours),
     orderUrl: settings.orderUrl,
     orderCtaLabel: settings.orderCtaLabel ?? "Bestill på nett",
     orderingEnabled: settings.orderingEnabled ?? true,

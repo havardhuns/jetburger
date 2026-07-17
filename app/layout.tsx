@@ -4,6 +4,7 @@ import "./globals.css";
 import { sanityFetch, SanityLive } from "@/sanity/lib/live";
 import { urlFor } from "@/sanity/lib/image";
 import { SITE_SETTINGS_QUERY } from "@/sanity/lib/queries";
+import { formatOpeningHoursCompact } from "@/lib/opening-hours";
 import { SITE_URL } from "@/lib/site-data";
 import { cn } from "@/lib/utils";
 import { TooltipProvider } from "@/components/ui/tooltip";
@@ -21,7 +22,10 @@ const geistMono = Geist_Mono({
 export async function generateMetadata(): Promise<Metadata> {
   const { data } = await sanityFetch({ query: SITE_SETTINGS_QUERY, stega: false });
   const title = data?.seoTitle ?? "Jetburger – Evje";
-  const description = data?.seoDescription ?? undefined;
+  const openingHoursCompact = formatOpeningHoursCompact(data?.openingHours);
+  const description =
+    [data?.seoDescription, openingHoursCompact && `Åpent ${openingHoursCompact}.`].filter(Boolean).join(" ") ||
+    undefined;
   return {
     metadataBase: new URL(SITE_URL),
     title,

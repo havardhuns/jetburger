@@ -6,7 +6,7 @@ import { Card, CardContent } from "@/components/ui/card";
 import type { Settings } from "@/lib/site-data";
 
 export function ContactSection({ settings }: { settings: Settings }) {
-  const { contactHeading, address, telHref, phone, email, openingHours, facebookUrl, instagramUrl } = settings;
+  const { contactHeading, address, telHref, phone, email, openingHoursLines, facebookUrl, instagramUrl } = settings;
   return (
     <section id="kontakt" className="mx-auto max-w-[1120px] px-5 py-[clamp(48px,8vw,72px)] lg:px-6">
       <div className="mb-9 flex flex-col gap-2.5">
@@ -56,14 +56,18 @@ export function ContactSection({ settings }: { settings: Settings }) {
                   </div>
                 </div>
               )}
-              {openingHours && (
+              {openingHoursLines.length > 0 && (
                 <div className="flex items-start gap-3.5">
                   <span className="flex size-9.5 shrink-0 items-center justify-center rounded-lg bg-primary/12 text-primary">
                     <Clock className="size-4" />
                   </span>
                   <div className="flex flex-col gap-0.5">
                     <span className="text-[15px] font-bold">Åpningstider</span>
-                    <span className="text-[15px] text-muted-foreground">{openingHours}</span>
+                    <span className="flex flex-col text-[15px] text-muted-foreground">
+                      {openingHoursLines.map((line) => (
+                        <span key={line}>{line}</span>
+                      ))}
+                    </span>
                   </div>
                 </div>
               )}
