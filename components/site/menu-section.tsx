@@ -3,6 +3,7 @@ import type { Settings } from "@/lib/site-data";
 
 export function MenuSection({ settings, menuCards }: { settings: Settings; menuCards: MenuGridCard[] }) {
   const { menuHeading, menuText, orderUrl, orderCtaLabel, orderingEnabled, telHref, phone } = settings;
+  const showOrderLink = orderUrl && orderingEnabled;
   return (
     <section id="meny" className="mx-auto max-w-[1120px] px-5 py-[clamp(48px,8vw,72px)] lg:px-6">
       <div className="mb-9 flex flex-col gap-2.5">
@@ -12,7 +13,7 @@ export function MenuSection({ settings, menuCards }: { settings: Settings; menuC
         )}
         <p className="max-w-[55ch] leading-relaxed text-muted-foreground">
           {menuText}
-          {orderUrl && orderingEnabled && (
+          {showOrderLink && (
             <>
               {" "}
               <a href={orderUrl} target="_blank" rel="noopener" data-umami-event="bestill-klikk" data-umami-event-sted="meny" className="font-semibold text-primary">
@@ -23,7 +24,8 @@ export function MenuSection({ settings, menuCards }: { settings: Settings; menuC
           )}
           {telHref && (
             <>
-              {" "}eller ring oss på{" "}
+              {" "}
+              {showOrderLink ? "eller ring oss på" : "Ring oss på"}{" "}
               <a href={telHref} className="font-semibold text-primary">
                 {phone}
               </a>
