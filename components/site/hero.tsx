@@ -90,16 +90,19 @@ export function Hero({ settings }: { settings: Settings }) {
             Se menyen
           </Button>
         </FadeUp>
-        <FadeUp delay={0.32} className="mt-3 flex flex-col gap-x-4 gap-y-2.5 text-sm font-medium text-foreground/80 md:flex-row md:flex-wrap md:items-center">
+        <FadeUp
+          delay={0.32}
+          className="mt-1 flex flex-col items-start gap-2 text-sm font-medium text-foreground/80 md:mt-3 md:flex-row md:flex-wrap md:items-center md:gap-x-4 md:gap-y-2.5"
+        >
           {openingHoursCompact && (
-            <span className="flex items-center gap-2">
-              <Clock className="size-4" />
+            <span className="flex items-center gap-2 rounded-lg border border-border/60 bg-background/55 py-1.5 pr-3.5 pl-2.5 backdrop-blur-sm md:border-0 md:bg-transparent md:p-0 md:backdrop-blur-none">
+              <Clock className="size-4 text-primary md:text-foreground/80" />
               Åpent {openingHoursCompact}
             </span>
           )}
           {telHref && (
-            <span className="flex items-center gap-2">
-              <Phone className="size-4" />
+            <span className="flex items-center gap-2 rounded-lg border border-border/60 bg-background/55 py-1.5 pr-3.5 pl-2.5 backdrop-blur-sm md:border-0 md:bg-transparent md:p-0 md:backdrop-blur-none">
+              <Phone className="size-4 text-primary md:text-foreground/80" />
               <a href={telHref} className="font-semibold text-foreground">
                 {phone}
               </a>
