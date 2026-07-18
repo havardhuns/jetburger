@@ -2,8 +2,8 @@ import { Clock, Phone } from "lucide-react";
 import Image from "next/image";
 
 import { FadeUp } from "@/components/site/fade-up";
+import { OrderCta } from "@/components/site/order-cta";
 import { Button } from "@/components/ui/button";
-import { ResponsiveTooltip, ResponsiveTooltipContent, ResponsiveTooltipTrigger } from "@/components/ui/tooltip";
 import type { Settings } from "@/lib/site-data";
 
 /** Renders a parenthesized part of the heading in the accent color, like the design's "(kanskje)". */
@@ -20,18 +20,7 @@ function Heading({ text }: { text: string }) {
 }
 
 export function Hero({ settings }: { settings: Settings }) {
-  const {
-    hero,
-    heroHeading,
-    heroText,
-    orderUrl,
-    orderCtaLabel,
-    orderingEnabled,
-    orderingDisabledMessage,
-    openingHoursCompact,
-    telHref,
-    phone,
-  } = settings;
+  const { hero, heroHeading, heroText, openingHoursCompact, telHref, phone } = settings;
   return (
     <section id="hjem" className="relative overflow-hidden">
       {hero && (
@@ -61,25 +50,7 @@ export function Hero({ settings }: { settings: Settings }) {
           </FadeUp>
         )}
         <FadeUp delay={0.24} nosnippet className="mt-2 flex flex-wrap gap-3">
-          {orderUrl && (orderingEnabled ? (
-            <Button
-              size="lg"
-              className="h-12 px-7 text-base font-bold"
-              nativeButton={false}
-              render={<a href={orderUrl} target="_blank" rel="noopener" data-umami-event="bestill-klikk" data-umami-event-sted="hero" />}
-            >
-              {orderCtaLabel}
-            </Button>
-          ) : (
-            <ResponsiveTooltip>
-              <ResponsiveTooltipTrigger
-                render={<Button size="lg" className="h-12 px-7 text-base font-bold opacity-50 cursor-pointer" />}
-              >
-                {orderCtaLabel}
-              </ResponsiveTooltipTrigger>
-              <ResponsiveTooltipContent>{orderingDisabledMessage}</ResponsiveTooltipContent>
-            </ResponsiveTooltip>
-          ))}
+          <OrderCta settings={settings} sted="hero" size="lg" className="h-12 px-7 text-base font-bold" />
           <Button
             size="lg"
             variant="outline"

@@ -1,13 +1,12 @@
 import { Phone, ShoppingCart } from "lucide-react";
 import Image from "next/image";
 
+import { OrderCta } from "@/components/site/order-cta";
 import { Button } from "@/components/ui/button";
-import { ResponsiveTooltip, ResponsiveTooltipContent, ResponsiveTooltipTrigger } from "@/components/ui/tooltip";
 import type { Settings } from "@/lib/site-data";
-import { cn } from "@/lib/utils";
 
 export function SiteHeader({ settings }: { settings: Settings }) {
-  const { logo, telHref, phone, orderUrl, orderCtaLabel, orderingEnabled, orderingDisabledMessage } = settings;
+  const { logo, telHref, phone, orderUrl, orderingEnabled } = settings;
   return (
     <header className="sticky top-0 z-50 border-b border-border bg-background/85 backdrop-blur-md">
       <nav className="mx-auto flex h-16 max-w-[1120px] items-center justify-between gap-6 px-5 lg:px-6">
@@ -35,45 +34,26 @@ export function SiteHeader({ settings }: { settings: Settings }) {
               </a>
             )}
           </div>
-          {orderUrl && (orderingEnabled ? (
+          {/* Nav links (incl. phone) are desktop-only, so on mobile a disabled
+              order button would be the header's only, dead-end action — offer
+              a call button there instead. */}
+          {orderUrl && !orderingEnabled && telHref && (
             <Button
-              className="ml-3 font-bold"
+              className="ml-3 font-bold md:hidden"
               nativeButton={false}
-              render={<a href={orderUrl} target="_blank" rel="noopener" data-umami-event="bestill-klikk" data-umami-event-sted="header" />}
+              render={<a href={telHref} />}
             >
-              <ShoppingCart data-icon="inline-start" />
-              {orderCtaLabel}
+              <Phone data-icon="inline-start" />
+              Ring oss
             </Button>
-          ) : (
-            <>
-              {/* Nav links (incl. phone) are desktop-only, so on mobile a disabled
-                  order button would be the header's only, dead-end action — offer
-                  a call button there instead. */}
-              {telHref && (
-                <Button
-                  className="ml-3 font-bold md:hidden"
-                  nativeButton={false}
-                  render={<a href={telHref} />}
-                >
-                  <Phone data-icon="inline-start" />
-                  Ring oss
-                </Button>
-              )}
-              <ResponsiveTooltip>
-                <ResponsiveTooltipTrigger
-                  render={
-                    <Button
-                      className={cn("ml-3 font-bold opacity-50 cursor-pointer", telHref && "hidden md:inline-flex")}
-                    />
-                  }
-                >
-                  <ShoppingCart data-icon="inline-start" />
-                  {orderCtaLabel}
-                </ResponsiveTooltipTrigger>
-                <ResponsiveTooltipContent>{orderingDisabledMessage}</ResponsiveTooltipContent>
-              </ResponsiveTooltip>
-            </>
-          ))}
+          )}
+          <OrderCta
+            settings={settings}
+            sted="header"
+            className="ml-3 font-bold"
+            disabledClassName={telHref ? "hidden md:inline-flex" : undefined}
+            icon={<ShoppingCart data-icon="inline-start" />}
+          />
         </div>
       </nav>
     </header>

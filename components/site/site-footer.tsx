@@ -3,8 +3,7 @@ import Image from "next/image";
 import type { Settings } from "@/lib/site-data";
 
 export function SiteFooter({ settings }: { settings: Settings }) {
-  const { logo, orderUrl, orderCtaLabel, orderingEnabled, telHref, phone } = settings;
-  const showOrderLink = orderUrl && orderingEnabled;
+  const { logo, orderUrl, orderCtaLabel, showOrderLink, telHref, phone } = settings;
   return (
     <footer className="border-t border-border">
       <div className="mx-auto flex max-w-[1120px] flex-wrap items-center justify-between gap-3 px-5 py-7 lg:px-6">

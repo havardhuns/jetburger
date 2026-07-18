@@ -10,6 +10,9 @@ export function deriveSettings(settings: NonNullable<SITE_SETTINGS_QUERY_RESULT>
   // applied, and next/image won't optimize SVG sources.
   const logoIsSvg = settings.logo?.asset?._id.endsWith("-svg") ?? false;
 
+  const orderUrl = settings.orderUrl ?? undefined;
+  const orderingEnabled = settings.orderingEnabled ?? true;
+
   return {
     heroHeading: settings.heroHeading,
     heroText: settings.heroText,
@@ -25,9 +28,10 @@ export function deriveSettings(settings: NonNullable<SITE_SETTINGS_QUERY_RESULT>
     openingHoursCompact: formatOpeningHoursCompact(settings.openingHours),
     openingHoursLines: formatOpeningHoursLines(settings.openingHours),
     openingHoursSpecification: toOpeningHoursSpecification(settings.openingHours),
-    orderUrl: settings.orderUrl,
+    orderUrl,
     orderCtaLabel: settings.orderCtaLabel ?? "Bestill på nett",
-    orderingEnabled: settings.orderingEnabled ?? true,
+    orderingEnabled,
+    showOrderLink: Boolean(orderUrl) && orderingEnabled,
     orderingDisabledMessage:
       settings.orderingDisabledMessage ??
       "Vi tar dessverre ikke imot bestillinger på nett akkurat nå. Ring oss gjerne!",
